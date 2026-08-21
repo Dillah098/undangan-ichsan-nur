@@ -20,9 +20,8 @@
 
   // Guest name from URL (?to= or ?name=) -> populate cover + prefill RSVP name
   const params = new URLSearchParams(window.location.search);
-  const guestRaw = params.get('to') || params.get('name') || '';
-  if (guestRaw) {
-    const guestName = decodeURIComponent(guestRaw.replace(/\+/g, ' ')).trim();
+  const guestName = (params.get('to') || params.get('name') || '').trim();
+  if (guestName) {
     const guestEl = document.getElementById('guestName');
     if (guestEl) guestEl.textContent = guestName;
     const wNameInput = document.getElementById('wName');
